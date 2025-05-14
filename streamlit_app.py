@@ -15,10 +15,10 @@ client = bigquery.Client(credentials=credentials)
 st.write("connection success")
 # Perform query.
 # Uses st.cache_data to only rerun when the query changes or after 10 min.
-@st.cache_data(ttl=600)
+#@st.cache_data(ttl=600)
 def run_query(query):
     st.write(query)
-    query_job = client.query(query)
+    query_job = client.query(query,ttl=0)
     rows_raw = query_job.result()
     # Convert to list of dicts. Required for st.cache_data to hash the return value.
     rows = [dict(row) for row in rows_raw]
@@ -35,9 +35,9 @@ def insert_query(query):
 # Create a connection object.
 st.title("ABC Steel Data Input Form")
 tab1, tab2, tab3 = st.tabs(["Update", "Read", "Analysis"])
-df = pd.DataFrame(run_query("SELECT * FROM `top-athlete-459808-j9.name_age_dataset.name_age`"),ttl=0)
+df = pd.DataFrame(run_query("SELECT * FROM `top-athlete-459808-j9.name_age_dataset.name_age`"))
 if tab2.button("refresh"):
-    df = pd.DataFrame(run_query("SELECT * FROM `top-athlete-459808-j9.name_age_dataset.name_age`"),ttl=0)
+    df = pd.DataFrame(run_query("SELECT * FROM `top-athlete-459808-j9.name_age_dataset.name_age`"))
 tab2.write(df)
 
 # Add the new vendor data to the existing data
