@@ -42,9 +42,7 @@ if submit_button:
     #"
 
     # Ejecutar la consulta
-    query_job_kai_insert = client.query("
-    INSERT INTO `light-willow-459806-t7.sample_name_data.name_age` (Name, Age) VALUES ('India', '75')
-    ")
+    query_job_kai_insert = client.query("INSERT INTO `light-willow-459806-t7.sample_name_data.name_age` (Name, Age) VALUES ('India', '75')")
     tab1.write(query_job_kai_insert)
     tab1.success('Record added Successfully')
     # Update Google Sheets with the new vendor data
