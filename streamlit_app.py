@@ -37,7 +37,7 @@ age = tab1.number_input(label="age",min_value=0,value=None)
 submit_button = tab1.button(label="Submit Details")
 if submit_button:
     insert = """
-    INSERT INTO `light-willow-459806-t7.sample_name_data.name_age` (Name, Age) VALUES ('India', '75')
+    INSERT INTO `light-willow-459806-t7.sample_name_data.name_age` (Name, Age) VALUES ('India', 75)
     """
 
     # Ejecutar la consulta
