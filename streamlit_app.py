@@ -37,12 +37,13 @@ age = tab1.number_input(label="age",min_value=0,value=None)
 submit_button = tab1.button(label="Submit Details")
 if submit_button:
     insert = """
-    INSERT INTO `light-willow-459806-t7.sample_name_data.name_age` (Name, Age) VALUES ('{name}', '{age}')
+    INSERT INTO `light-willow-459806-t7.sample_name_data.name_age` (Name, Age) VALUES ('India', '75')
     """
 
     # Ejecutar la consulta
     query_job_kai_insert = client.query(insert)
-    st.success('Record added Successfully')
+    tab1.write(query_job_kai_insert)
+    tab1.success('Record added Successfully')
     # Update Google Sheets with the new vendor data
     
 
