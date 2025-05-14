@@ -15,7 +15,7 @@ client = bigquery.Client(credentials=credentials)
 st.write("connection success")
 # Perform query.
 # Uses st.cache_data to only rerun when the query changes or after 10 min.
-@st.cache_data(ttl=100)
+@st.cache_data(ttl=5)
 def run_query(query):
     st.write(query)
     query_job = client.query(query)
