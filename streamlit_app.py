@@ -23,6 +23,7 @@ def run_query(query):
     rows = [dict(row) for row in rows_raw]
     return rows
 
+
 # Create a connection object.
 st.title("ABC Steel Data Input Form")
 tab1, tab2, tab3 = st.tabs(["Update", "Read", "Analysis"])
@@ -36,9 +37,9 @@ name = tab1.text_input(label="Name",value=None)
 age = tab1.number_input(label="age",min_value=0,value=None)
 submit_button = tab1.button(label="Submit Details")
 if submit_button:
-    insert = """
+    insert = "
     INSERT INTO `light-willow-459806-t7.sample_name_data.name_age` (Name, Age) VALUES ('India', '75')
-    """
+    "
 
     # Ejecutar la consulta
     query_job_kai_insert = client.query(insert)
