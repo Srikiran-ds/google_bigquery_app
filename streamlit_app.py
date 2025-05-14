@@ -49,7 +49,7 @@ if submit_button:
     #"
 
     # Ejecutar la consulta
-    tab1.write("INSERT INTO `light-willow-459806-t7.sample_name_data.name_age` (Name, Age) VALUES ('India', '75')")
+    tab1.write("INSERT INTO `light-willow-459806-t7.sample_name_data.name_age` (Name, Age) VALUES ('{name}', {age})")
     tab1.write("INSERT INTO `light-willow-459806-t7.sample_name_data.name_age` (Name, Age) VALUES ('India', '75')")
     
     query_job_kai_insert =insert_query("""INSERT INTO `light-willow-459806-t7.sample_name_data.name_age` (Name, Age) VALUES ('India', '75')""")
