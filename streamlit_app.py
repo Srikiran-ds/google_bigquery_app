@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 
 st.title("🎈 My new app Hello Hi")
 st.write(
@@ -28,10 +29,10 @@ def run_query(query):
     return rows
 
 rows2 = run_query("SELECT * FROM `light-willow-459806-t7.sample_name_data.name_age`")
-st.write(rows2)
-rows = run_query("SELECT word FROM `bigquery-public-data.samples.shakespeare` LIMIT 10")
+st.write(pd.DataFrame(rows2))
+#rows = run_query("SELECT word FROM `bigquery-public-data.samples.shakespeare` LIMIT 10")
 
 # Print results.
-st.write("Some wise words from Shakespeare:")
-for row in rows:
-    st.write("✍️ " + row['word'])
+#st.write("Some wise words from Shakespeare:")
+#for row in rows:
+#    st.write("✍️ " + row['word'])
