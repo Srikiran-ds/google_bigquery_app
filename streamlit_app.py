@@ -23,6 +23,13 @@ def run_query(query):
     rows = [dict(row) for row in rows_raw]
     return rows
 
+def insert_query(query):
+    query_job = client.query(query)
+    #rows_raw = query_job.result()
+    # Convert to list of dicts. Required for st.cache_data to hash the return value.
+    #rows = [dict(row) for row in rows_raw]
+    return query_job
+
 
 # Create a connection object.
 st.title("ABC Steel Data Input Form")
@@ -42,7 +49,7 @@ if submit_button:
     #"
 
     # Ejecutar la consulta
-    query_job_kai_insert = client.query("INSERT INTO `light-willow-459806-t7.sample_name_data.name_age` (Name, Age) VALUES ('India', '75')")
+    query_job_kai_insert =insert_query("INSERT INTO `light-willow-459806-t7.sample_name_data.name_age` (Name, Age) VALUES ('India', '75')")
     tab1.write(query_job_kai_insert)
     tab1.success('Record added Successfully')
     # Update Google Sheets with the new vendor data
