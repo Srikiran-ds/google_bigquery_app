@@ -17,6 +17,7 @@ st.write("connection success")
 # Uses st.cache_data to only rerun when the query changes or after 10 min.
 @st.cache_data(ttl=600)
 def run_query(query):
+    st.write(query)
     query_job = client.query(query)
     rows_raw = query_job.result()
     # Convert to list of dicts. Required for st.cache_data to hash the return value.
@@ -49,8 +50,8 @@ if submit_button:
     #"
 
     # Ejecutar la consulta
-    tab1.write("INSERT INTO `light-willow-459806-t7.sample_name_data.name_age` (Name, Age) VALUES ('{name}', {age})")
-    tab1.write("INSERT INTO `light-willow-459806-t7.sample_name_data.name_age` (Name, Age) VALUES ('India', '75')")
+    #tab1.write("INSERT INTO `light-willow-459806-t7.sample_name_data.name_age` (Name, Age) VALUES ('{name}', {age})")
+    #tab1.write("INSERT INTO `light-willow-459806-t7.sample_name_data.name_age` (Name, Age) VALUES ('India', '75')")
     
     #query_job_kai_insert =insert_query("""INSERT INTO `light-willow-459806-t7.sample_name_data.name_age` (Name, Age) VALUES ('India', '75')""")
     #query_job_kai_insert =run_query("select * from `light-willow-459806-t7.sample_name_data.name_age` where age > 20")
