@@ -1,16 +1,11 @@
 import streamlit as st
 import pandas as pd
 
-st.title("🎈 My new app Hello Hi")
-st.write(
-    "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
-)
 
-# streamlit_app.py
-
-import streamlit as st
 from google.oauth2 import service_account
 from google.cloud import bigquery
+
+
 
 # Create API client.
 credentials = service_account.Credentials.from_service_account_info(
@@ -28,8 +23,39 @@ def run_query(query):
     rows = [dict(row) for row in rows_raw]
     return rows
 
-rows2 = run_query("SELECT * FROM `light-willow-459806-t7.sample_name_data.name_age`")
-st.write(pd.DataFrame(rows2))
+# Create a connection object.
+st.title("ABC Steel Data Input Form")
+tab1, tab2, tab3 = st.tabs(["Update", "Read", "Analysis"])
+df = pd.DataFrame(run_query("SELECT * FROM `light-willow-459806-t7.sample_name_data.name_age`"))
+if tab2.button("refresh"):
+    df = pd.DataFrame(run_query("SELECT * FROM `light-willow-459806-t7.sample_name_data.name_age`"))
+tab2.write(df)
+
+# Add the new vendor data to the existing data
+name = tab1.text_input(label="Name",value=None)
+age = tab1.number_input(label="age",min_value=0,value=None)
+submit_button = tab1.button(label="Submit Details")
+if submit_button:
+    insert = """
+    INSERT INTO `light-willow-459806-t7.sample_name_data.name_age` (Name, Age) VALUES ('{name}', '{age}')
+    """
+
+    # Ejecutar la consulta
+    query_job_kai_insert = client.query(insert)
+    st.success('Record added Successfully')
+    # Update Google Sheets with the new vendor data
+    
+
+
+
+    #df = conn.read(worksheet="sample", ttl="0.5m")
+    #st.write(df)
+#tab3.write("Mean of ages")
+tab3.metric("Mean Age",df.Age.mean())
+tab3.metric("#Entries",df.shape[0])
+
+rows2 = pd.DataFrame(run_query("SELECT * FROM `light-willow-459806-t7.sample_name_data.name_age`"))
+st.write()
 #rows = run_query("SELECT word FROM `bigquery-public-data.samples.shakespeare` LIMIT 10")
 
 # Print results.
