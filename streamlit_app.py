@@ -69,7 +69,7 @@ if submit_button:
 tab3.metric("Mean Age",df.Age.mean())
 tab3.metric("#Entries",df.shape[0])
 
-rows2 = pd.DataFrame(run_query("SELECT * FROM `light-willow-459806-t7.sample_name_data.name_age`"))
+rows2 = pd.DataFrame(run_query("SELECT * FROM `top-athlete-459808-j9.name_age_dataset.name_age`"))
 st.write()
 #rows = run_query("SELECT word FROM `bigquery-public-data.samples.shakespeare` LIMIT 10")
 
