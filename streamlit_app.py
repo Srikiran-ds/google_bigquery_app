@@ -27,8 +27,8 @@ def run_query(query):
     rows = [dict(row) for row in rows_raw]
     return rows
 
-#rows = run_query("SELECT * FROM light-willow-459806-t7.sample_name_data.name_age")
-#st.write(rows)
+rows2 = run_query("SELECT * FROM `light-willow-459806-t7.sample_name_data.name_age`")
+st.write(rows2)
 rows = run_query("SELECT word FROM `bigquery-public-data.samples.shakespeare` LIMIT 10")
 
 # Print results.
