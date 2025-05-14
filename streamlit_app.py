@@ -53,7 +53,7 @@ if submit_button:
     #tab1.write("INSERT INTO `light-willow-459806-t7.sample_name_data.name_age` (Name, Age) VALUES ('{name}', {age})")
     #tab1.write("INSERT INTO `light-willow-459806-t7.sample_name_data.name_age` (Name, Age) VALUES ('India', '75')")
     
-    #query_job_kai_insert =insert_query("""INSERT INTO `light-willow-459806-t7.sample_name_data.name_age` (Name, Age) VALUES ('India', '75')""")
+    #query_job_kai_insert =insert_query(f"""INSERT INTO `light-willow-459806-t7.sample_name_data.name_age` (Name, Age) VALUES ('India', '75')""")
     #query_job_kai_insert =run_query("select * from `light-willow-459806-t7.sample_name_data.name_age` where age > 20")
     query_job_kai_insert =run_query("""insert into `top-athlete-459808-j9.name_age_dataset.name_age` values ('{name}',{age})""")
     tab1.write(query_job_kai_insert)
