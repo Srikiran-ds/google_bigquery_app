@@ -12,12 +12,12 @@ credentials = service_account.Credentials.from_service_account_info(
     st.secrets["gcp_service_account"]
 )
 client = bigquery.Client(credentials=credentials)
-st.write("connection success")
+# st.write("connection success")
 # Perform query.
 # Uses st.cache_data to only rerun when the query changes or after 10 min.
-@st.cache_data(ttl=5)
+@st.cache_data(ttl=1)
 def run_query(query):
-    st.write(query)
+    #st.write(query)
     query_job = client.query(query)
     rows_raw = query_job.result()
     # Convert to list of dicts. Required for st.cache_data to hash the return value.
@@ -38,7 +38,7 @@ tab1, tab2, tab3 = st.tabs(["Update", "Read", "Analysis"])
 df = pd.DataFrame(run_query("SELECT * FROM `top-athlete-459808-j9.name_age_dataset.name_age`"))
 if tab2.button("refresh"):
     df = pd.DataFrame(run_query("SELECT * FROM `top-athlete-459808-j9.name_age_dataset.name_age`"))
-tab2.write(df)
+#tab2.write(df)
 
 # Add the new vendor data to the existing data
 name = tab1.text_input(label="Name",value=None)
@@ -57,7 +57,7 @@ if submit_button:
     #query_job_kai_insert =run_query("select * from `light-willow-459806-t7.sample_name_data.name_age` where age > 20")
     #query_job_kai_insert =insert_query("insert into `top-athlete-459808-j9.name_age_dataset.name_age` values (:name,:age)",name,age)
     query_job_kai_insert =client.query(f"""insert into `top-athlete-459808-j9.name_age_dataset.name_age` values ('{name}',{age})""")
-    tab1.write(query_job_kai_insert)
+    #tab1.write(query_job_kai_insert)
     tab1.success('Record added Successfully')
     # Update Google Sheets with the new vendor data
     
@@ -71,7 +71,7 @@ tab3.metric("Mean Age",df.Age.mean())
 tab3.metric("#Entries",df.shape[0])
 
 rows2 = pd.DataFrame(run_query("SELECT * FROM `top-athlete-459808-j9.name_age_dataset.name_age`"))
-st.write()
+#st.write()
 #rows = run_query("SELECT word FROM `bigquery-public-data.samples.shakespeare` LIMIT 10")
 
 # Print results.
