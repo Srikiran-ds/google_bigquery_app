@@ -70,6 +70,7 @@ if submit_button:
 tab3.metric("Mean Age",df.Age.mean())
 tab3.metric("#Entries",df.shape[0])
 tab3.line_chart(df.Age)
+tab3.bar_chart(df['Age'].hist())
 
 rows2 = pd.DataFrame(run_query("SELECT * FROM `top-athlete-459808-j9.name_age_dataset.name_age`"))
 #st.write()
