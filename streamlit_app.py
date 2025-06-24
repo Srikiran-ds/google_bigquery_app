@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import plotly.express as px
 
 
 from google.oauth2 import service_account
@@ -70,9 +71,12 @@ if submit_button:
 tab3.metric("Mean Age",df.Age.mean())
 tab3.metric("#Entries",df.shape[0])
 tab3.line_chart(df.Age)
-tab3.write(df['Age'].hist())
+# Create a histogram
+fig = px.histogram(df, x="Age")
 
-rows2 = pd.DataFrame(run_query("SELECT * FROM `top-athlete-459808-j9.name_age_dataset.name_age`"))
+# Display the figure
+tab3.plotly_chart(fig)
+#rows2 = pd.DataFrame(run_query("SELECT * FROM `top-athlete-459808-j9.name_age_dataset.name_age`"))
 #st.write()
 #rows = run_query("SELECT word FROM `bigquery-public-data.samples.shakespeare` LIMIT 10")
 
