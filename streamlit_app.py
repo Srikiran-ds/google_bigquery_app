@@ -105,7 +105,7 @@ tab3.metric("#Entries",df.shape[0])
 #tab3.line_chart(df.Age)
 # Create a histogram
 #fig = px.histogram(df, x="Age")
-fig=px.bar(df.groupby('date').size())
+fig=px.bar(df.groupby('date','shift').size(),x='date',color='shift')
 # Display the figure
 tab3.plotly_chart(fig)
 #rows2 = pd.DataFrame(run_query("SELECT * FROM `top-athlete-459808-j9.name_age_dataset.name_age`"))
