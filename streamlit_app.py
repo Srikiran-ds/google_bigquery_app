@@ -105,7 +105,7 @@ tab3.metric("#Entries",df.shape[0])
 #tab3.line_chart(df.Age)
 # Create a histogram
 #fig = px.histogram(df, x="Age")
-fig=px.bar(df.groupby(['date','shift']).size(),x='date',color='shift')
+fig=px.bar(df.groupby(['date','shift'], as_index=False).size(),x='date',color='shift')
 tab3.write(df.groupby(['date','shift'], as_index=False).size().head())
 # Display the figure
 tab3.plotly_chart(fig)
