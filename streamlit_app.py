@@ -88,7 +88,7 @@ if submit_button:
     #query_job_kai_insert =insert_query("insert into `top-athlete-459808-j9.name_age_dataset.name_age` values (:name,:age)",name,age)
     #query_job_kai_insert =client.query(f"""insert into `top-athlete-459808-j9.name_age_dataset.name_age` values ('{name}',{age})""")
     #query_job_kai_insert =client.query(f"""insert into `top-athlete-459808-j9.maintenance_date.log_data_sample` values ('{date}','{time}','{shift}','{incharge}','{wash_flag}','{vehicle}','{vehicle_type}','{break_cause_flag}','{break_maintenance_flag}','{preventive_maintenance_flag}')""")
-    query_job_kai_insert =client.query(f"""insert into `top-athlete-459808-j9.maintenance_date.log_data` values ({date},{time},{shift},{incharge},{wash_flag},{vehicle},{vehicle_type},{break_cause_flag},{break_maintenance_flag},{preventive_maintenance_flag})""")
+    #query_job_kai_insert =client.query(f"""insert into `top-athlete-459808-j9.maintenance_date.log_data` values ({date},{time},{shift},{incharge},{wash_flag},{vehicle},{vehicle_type},{break_cause_flag},{break_maintenance_flag},{preventive_maintenance_flag})""")
     query_job_kai_insert =client.query(f"""insert into `top-athlete-459808-j9.maintenance_date.log_data` values ({date})""")
     #tab1.write(query_job_kai_insert)
     tab1.success('Record added Successfully')
