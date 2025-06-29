@@ -37,9 +37,9 @@ def insert_query(query,name,age):
 st.title("ABC Steel Data Input Form")
 tab1, tab2, tab3 = st.tabs(["Update", "Read", "Analysis"])
 #df = pd.DataFrame(run_query("SELECT * FROM `top-athlete-459808-j9.name_age_dataset.name_age`"))
-df = pd.DataFrame(run_query("SELECT * FROM `top-athlete-459808-j9.maintenance_date.log_data_sample`"))
+df = pd.DataFrame(run_query("SELECT * FROM `top-athlete-459808-j9.maintenance_date.log_data`"))
 if tab2.button("refresh"):
-    df = pd.DataFrame(run_query("SELECT * FROM `top-athlete-459808-j9.maintenance_date.log_data_sample`"))
+    df = pd.DataFrame(run_query("SELECT * FROM `top-athlete-459808-j9.maintenance_date.log_data`"))
 tab2.write(df)
 
 # Add the new vendor data to the existing data
