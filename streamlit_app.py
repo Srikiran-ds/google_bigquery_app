@@ -105,9 +105,15 @@ tab3.metric("#Entries",df.shape[0])
 #tab3.line_chart(df.Age)
 # Create a histogram
 #fig = px.histogram(df, x="Age")
-fig=px.bar(df.groupby('date','shift').size(),x='date',color='shift')
+#fig=px.bar(df.groupby('date','shift').size(),x='date',color='shift')
+tab3.write(df.groupby('date','shift').size().head())
 # Display the figure
-tab3.plotly_chart(fig)
+#tab3.plotly_chart(fig)
+df2 = px.data.medals_long()
+tab3.write(df2.head())
+fig2 = px.bar(df, x="medal", y="count", color="nation",
+             pattern_shape="nation", pattern_shape_sequence=[".", "x", "+"])
+tab3.plotly_chart(fig2)
 #rows2 = pd.DataFrame(run_query("SELECT * FROM `top-athlete-459808-j9.name_age_dataset.name_age`"))
 #st.write()
 #rows = run_query("SELECT word FROM `bigquery-public-data.samples.shakespeare` LIMIT 10")
