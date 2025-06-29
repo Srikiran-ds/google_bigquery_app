@@ -111,7 +111,7 @@ tab3.write(df.groupby(['date','shift'], as_index=False).size().head())
 #tab3.plotly_chart(fig)
 df2 = px.data.medals_long()
 tab3.write(df2.head())
-fig2 = px.bar(df, x="medal", y="count", color="nation",
+fig2 = px.bar(df2, x="medal", y="count", color="nation",
              pattern_shape="nation", pattern_shape_sequence=[".", "x", "+"])
 tab3.plotly_chart(fig2)
 #rows2 = pd.DataFrame(run_query("SELECT * FROM `top-athlete-459808-j9.name_age_dataset.name_age`"))
