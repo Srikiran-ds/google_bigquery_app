@@ -46,33 +46,33 @@ tab2.write(df)
 #name = tab1.text_input(label="Name",value=None)
 #age = tab1.number_input(label="age",min_value=0,value=None)
 date = tab1.date_input("Entry date", value="today")
-time=tab1.time_input("Time", value="now")
-shift = tab1.selectbox(
-    "Shift",
-    ("SHIFT-A", "SHIFT-B", "SHIFT-C"),
-)
-incharge = tab1.text_input("SHIFT INCHARGE NAME", "")
-wash_flag = tab1.selectbox(
-    "WASHING & GREASING",
-    ("YES", "NO"),
-)
-vehicle = tab1.selectbox(
-    "VEHICLE NO",
-    ("TATA EX 19", "TATA EX 16","TATA EX 18","LG EX 21"),
-)
-vehicle_type = tab1.text_input("VEHICLE TYPE", "EXCAVATOR")
-break_cause_flag = tab1.selectbox(
-    "BRAKEDOWN CAUSE",
-    ( "NO","YES"),
-)
-break_maintenance_flag = tab1.selectbox(
-    "BREAKDOWN MAINTENANCE",
-    ( "NO","YES"),
-)
-preventive_maintenance_flag = tab1.selectbox(
-    "PREVENTIVE MAINTENANCE",
-    ("YES", "NO"),
-)
+#time=tab1.time_input("Time", value="now")
+#shift = tab1.selectbox(
+#    "Shift",
+#    ("SHIFT-A", "SHIFT-B", "SHIFT-C"),
+#)
+#incharge = tab1.text_input("SHIFT INCHARGE NAME", "")
+#wash_flag = tab1.selectbox(
+#    "WASHING & GREASING",
+#    ("YES", "NO"),
+#)
+#vehicle = tab1.selectbox(
+#    "VEHICLE NO",
+#    ("TATA EX 19", "TATA EX 16","TATA EX 18","LG EX 21"),
+#)
+#vehicle_type = tab1.text_input("VEHICLE TYPE", "EXCAVATOR")
+#break_cause_flag = tab1.selectbox(
+#    "BRAKEDOWN CAUSE",
+#    ( "NO","YES"),
+#)
+#break_maintenance_flag = tab1.selectbox(
+#    "BREAKDOWN MAINTENANCE",
+#    ( "NO","YES"),
+#)
+#preventive_maintenance_flag = tab1.selectbox(
+#    "PREVENTIVE MAINTENANCE",
+#    ("YES", "NO"),
+#)
 submit_button = tab1.button(label="Submit Details")
 if submit_button:
     #insert = "
@@ -89,6 +89,7 @@ if submit_button:
     #query_job_kai_insert =client.query(f"""insert into `top-athlete-459808-j9.name_age_dataset.name_age` values ('{name}',{age})""")
     #query_job_kai_insert =client.query(f"""insert into `top-athlete-459808-j9.maintenance_date.log_data_sample` values ('{date}','{time}','{shift}','{incharge}','{wash_flag}','{vehicle}','{vehicle_type}','{break_cause_flag}','{break_maintenance_flag}','{preventive_maintenance_flag}')""")
     query_job_kai_insert =client.query(f"""insert into `top-athlete-459808-j9.maintenance_date.log_data` values ({date},{time},{shift},{incharge},{wash_flag},{vehicle},{vehicle_type},{break_cause_flag},{break_maintenance_flag},{preventive_maintenance_flag})""")
+    query_job_kai_insert =client.query(f"""insert into `top-athlete-459808-j9.maintenance_date.log_data` values ({date})""")
     #tab1.write(query_job_kai_insert)
     tab1.success('Record added Successfully')
     # Update Google Sheets with the new vendor data
